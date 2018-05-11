@@ -23,12 +23,14 @@
         var password = $('#passwordFld').val();
         var firstName = $('#firstNameFld').val();
         var lastName = $('#lastNameFld').val();
+        var date = $('#dateFld').val();
 
         var user = {
             username: username,
             password: password,
             firstName: firstName,
-            lastName: lastName
+            lastName: lastName,
+            date: date
         };
 
         fetch('http://localhost:8080/api/user', {
