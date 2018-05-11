@@ -54,5 +54,22 @@
             tbody.append(clone);
         }
     }
+    
+    function deleteUser(event) {
+        var deleteBtn = $(event.currentTarget);
+        var userId = deleteBtn
+            .parent()
+            .parent()
+            .attr('id');
+
+        userService
+            .deleteUser(userId)
+            .then(findAllUsers);
+    }
+
+    function editUser(event) {
+        console.log('editUser');
+        console.log(event);
+    }
 
 })();
