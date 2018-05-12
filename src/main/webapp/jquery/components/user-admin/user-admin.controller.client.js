@@ -4,18 +4,22 @@
 
     var tbody;
     var template;
+    var userService = new UserServiceClient();
 
     function main() {
         tbody = $('tbody');
         template = $('.template');
         $('#createUser').click(createUser);
 
-        var promise = fetch('http://localhost:8080/api/user');
-        promise.then(function (response) {
-            return response.json();
-        }).then(renderUsers)
+        findAllUsers();
     }
 
+    function findAllUsers(){
+        userService
+        .findAllUsers()
+        .then(renderUsers);
+    }
+    
     function createUser() {
         console.log('createUser');
 
@@ -33,20 +37,19 @@
             date: date
         };
 
-        fetch('http://localhost:8080/api/user', {
-            method: 'post',
-            body: JSON.stringify(user),
-            headers: {
-                'content-type': 'application/json'
-            }
-        });
+       userService.createUser(user).then().then(findAllUsers);;
     }
 
     function renderUsers(users) {
+    	tbody.empty();
         for(var i=0; i<users.length; i++) {
             var user = users[i];
             var clone = template.clone();
-            clone.find('.username').html(user.username);
+            
+            clone.attr('id', user.id);
+            clone.find('.username').html(user.username)
+            clone.find('.delete').click(deleteUser);
+            clone.find('.edit').click(deleteUser);
             clone.find('.password').html(user.password);
             clone.find('.firstName').html(user.firstName);
             clone.find('.lastName').html(user.lastName);
