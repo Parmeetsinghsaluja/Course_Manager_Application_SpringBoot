@@ -35,6 +35,7 @@ public class UserService {
 	@PostMapping("/api/login")
 	public List<User> login(@RequestBody User user) {
 		return (List<User>) repository.findUserByCredentials(user.getUsername(), user.getPassword());
+
 	}
 	
 	@GetMapping("/api/user")
@@ -48,6 +49,9 @@ public class UserService {
 		if(data.isPresent()) {
 			User user = data.get();
 			user.setFirstName(newUser.getFirstName());
+			user.setUsername(newUser.getUsername());
+			user.setLastName(newUser.getLastName());
+			user.setDate(newUser.getDate());
 			repository.save(user);
 			return user;
 		}
