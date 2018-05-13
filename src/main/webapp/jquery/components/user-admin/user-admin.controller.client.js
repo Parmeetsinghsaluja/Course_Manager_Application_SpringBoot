@@ -9,7 +9,7 @@
     var $passwordFld;
     var $firstNameFld;
     var $lastNameFld;
-    var $dateFld;
+    var $roleFld;
     var userService = new UserServiceClient();
 
     function main() {
@@ -19,7 +19,7 @@
         $passwordFld = $("#passwordFld");
         $firstNameFld = $("#firstNameFld");
         $lastNameFld = $("#lastNameFld");
-        $dateFld = $("#dateFld");
+        $roleFld = $("#roleFld");
         $('#createUser').click(createUser);
 
         findAllUsers();
@@ -37,14 +37,14 @@
         var password = $passwordFld.val();
         var firstName = $firstNameFld.val();
         var lastName = $lastNameFld.val();
-        var date = $dateFld.val();
+        var role = $roleFld.val();
 
         var user = {
             username: username,
             password: password,
             firstName: firstName,
             lastName: lastName,
-            date: date
+            role: role
         };
 
        userService.createUser(user).then().then(findAllUsers);;
@@ -63,7 +63,7 @@
             clone.find('.password').html(user.password);
             clone.find('.firstName').html(user.firstName);
             clone.find('.lastName').html(user.lastName);
-            clone.find('.date').html(user.date);
+            clone.find('.role').html(user.role);
             tbody.append(clone);
         }
     }
@@ -100,7 +100,7 @@
                 password: $passwordFld.val(),
                 firstName: $firstNameFld.val(),
                 lastName: $lastNameFld.val(),
-                date: $dateFld.val()
+                role: $roleFld.val()
             };
     	userService
     		.updateUser(event.data,user)
@@ -117,12 +117,12 @@
         $passwordFld = $("#passwordFld");
         $firstNameFld = $("#firstNameFld");
         $lastNameFld = $("#lastNameFld");
-        $dateFld = $("#dateFld");
+        $roleFld = $("#roleFld");
         $usernameFld.val(user.username);
         $passwordFld.val(user.password);
         $firstNameFld.val(user.firstName);
         $lastNameFld.val(user.lastName);
-        $dateFld.val(user.date);
+        $roleFld.val(user.role);
     	}
 
 

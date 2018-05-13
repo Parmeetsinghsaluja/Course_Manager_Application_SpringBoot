@@ -1,6 +1,5 @@
 package com.example.myapp.models;
 
-import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +16,7 @@ public class User {
 	private String password;
 	private String firstName;
 	private String lastName;
-	private Date date;
+	private String role;
 	public int getId() {
 		return id;
 	}
@@ -48,11 +47,11 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Date getDate() {
-		return date;
+	public String getRole() {
+		return role;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 }

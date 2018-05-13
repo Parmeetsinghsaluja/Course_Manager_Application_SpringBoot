@@ -16,21 +16,26 @@
 	<h1>User Admin</h1>
 	<table class ="table">
 	  <thead>
-	    <tr>
-	      <th>Username</th>
-	      <th>Password</th>
-	      <th>First Name</th>
-	      <th>Last Name</th>
-	      <th>DOB</th>
-	      <th>&nbsp;</th>
+	    <tr >
+	      <th scope="col">Username</th>
+	      <th scope="col">Password</th>
+	      <th scope="col">First Name</th>
+	      <th scope="col">Last Name</th>
+	      <th scope="col">Role</th>
+	      <th scope="col">&nbsp;</th>
 	    </tr>
 		<tr>  
-		<th><input id="usernameFld" class ="form-control" placeholder="username"/></th>
-        <th><input id="passwordFld" class ="form-control" type ="password" placeholder="password"/></th>
-        <th><input id="firstNameFld" class ="form-control" placeholder="first name"/></th>
-        <th><input id="lastNameFld" class ="form-control" placeholder="last name"/></th>
-        <th><input  id="dateFld" class ="form-control" type="date"/></th>
-        <th><button id="updateUser" type="button" class ="btn btn-danger">Update</button> 
+		<th scope="col"><input id="usernameFld" class ="form-control" placeholder="username"/></th>
+        <th scope="col"><input id="passwordFld" class ="form-control" type ="password" placeholder="password"/></th>
+        <th scope="col"><input id="firstNameFld" class ="form-control" placeholder="first name"/></th>
+        <th scope="col"><input id="lastNameFld" class ="form-control" placeholder="last name"/></th>
+        <th scope="col"><select class="form-control" id="roleFld"  size="1">
+   			<option value="Faculty">Faculty</option>
+    		<option value="Student">Student</option>
+    		<option value="Admin">Admin</option>
+  			</select>
+  		</th>
+        <th scope="col"><button id="updateUser" type="button" class ="btn btn-danger">Update</button> 
         	<button id="createUser" class ="btn btn-success">Create</button></th></tr>
   </thead>
   <tbody>
@@ -39,7 +44,7 @@
   	<td class ="password"></td>
   	<td class ="firstName"></td>
     <td class ="lastName"></td>
-    <td class ="date"></td>
+    <td class ="role"></td>
     <td><button class ="delete btn btn-danger"> Delete </button> 
     	<button class ="edit btn btn-success">Edit</button></td>
   </tr>   

@@ -32,10 +32,18 @@ public class UserService {
 		return repository.save(user);
 	}
 	
+	@PostMapping("/api/reg")
+	public User reg(@RequestBody User user) {
+		Optional <User> data = repository.findUserByUserName(user.getUsername());
+		if(data.isPresent()) {
+			return null;
+		}
+		return createUser(user);
+	}
+	
 	@PostMapping("/api/login")
 	public List<User> login(@RequestBody User user) {
 		return (List<User>) repository.findUserByCredentials(user.getUsername(), user.getPassword());
-
 	}
 	
 	@GetMapping("/api/user")
@@ -51,7 +59,7 @@ public class UserService {
 			user.setFirstName(newUser.getFirstName());
 			user.setUsername(newUser.getUsername());
 			user.setLastName(newUser.getLastName());
-			user.setDate(newUser.getDate());
+			user.setRole(newUser.getRole());
 			repository.save(user);
 			return user;
 		}
@@ -59,10 +67,11 @@ public class UserService {
 	}
 	
 	@GetMapping("/api/user/{userId}")
-	public User findUserById(@PathVariable("userId") int userId) {
+	public User findUserById(@PathVariable("userId") int userId) throws Exception {
 		Optional<User> data = repository.findById(userId);
 		if(data.isPresent()) {
-			return data.get();
+			Exception e = new Exception();
+			throw e;
 		}
 		return null;
 	}
