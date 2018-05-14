@@ -1,51 +1,67 @@
 (function() {
     $(init);
 
-    var $staticEmail;
-    var $firstName;
-    var $lastName;
+    var $staticUsername;
+    var $phone;
+    var $email;
+    var $dob;
+    var $role;
     var $updateBtn;
     var userService = new UserServiceClient();
 
     function init() {
-        $staticEmail = $("#staticEmail");
-        $firstName = $("#firstName");
-        $lastName = $("#lastName");
+        var url = ($(this).attr('URL'));
+        var username = url.split('?')[1].split("=")[1];
+        $staticUsername = $("#staticUsernameFld");
+        findUserIdByUsername(username);
+        $staticUsername.val(username);
+        $phone = $("#phoneFld");
+        $email = $("#emailFLd");
+        $dob = $("#dobFld");
+        $role = $("#roleFld");
         $updateBtn = $("#updateBtn")
             .click(updateUser);
-
-        findUserById(12);
     }
 
     function updateUser() {
         var user = {
-            firstName: $firstName.val(),
-            lastName: $lastName.val()
+            username: $staticUsername.val(),
+            phone: $phone.val(),
+            email: $email.val(),
+            dateOfBirth: $dob.val(),
+            role: $role.val()
         };
 
         userService
-            .updateUser(12, user)
+            .updateProfile(user)
             .then(success);
     }
 
     function success(response) {
-        if(response === null) {
-            alert('unable to update')
+        if(response == null) {
+            alert('Cannot Update the Profile');
         } else {
-            alert('success');
+            alert('Successfully Updated Profile');
         }
     }
 
-    function findUserById(userId) {
+    
+    function findUserByUserId(userId) {
         userService
             .findUserById(userId)
             .then(renderUser);
     }
     
+    function findUserIdByUsername(username) {
+        userService
+            .findUserIdByUsername(username)
+            .then(findUserByUserId);
+    }
+    
     function renderUser(user) {
-        console.log(user);
-        $staticEmail.val(user.username);
-        $firstName.val(user.firstName);
-        $lastName.val(user.lasteName);
+        $phone.val(user.phone);
+        $email.val(user.email);
+        $dob.val(user.dateOfBirth);
+        $role.val(user.role);
     }
 })();

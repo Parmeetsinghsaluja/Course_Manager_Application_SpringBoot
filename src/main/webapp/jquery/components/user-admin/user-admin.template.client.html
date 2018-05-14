@@ -6,6 +6,7 @@
    <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
    		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" 
    		crossorigin="anonymous"></script>
+ <link href=" https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
    <script src = "../../services/user.service.client.js"></script>	
    <script src= "user-admin.controller.client.js"></script>
    
@@ -35,23 +36,24 @@
     		<option value="Admin">Admin</option>
   			</select>
   		</th>
-        <th scope="col"><button id="updateUser" type="button" class ="btn btn-danger">Update</button> 
-        	<button id="createUser" class ="btn btn-success">Create</button></th></tr>
+        <th scope="col"><span class ="float-right" style="white-space: nowrap">
+        <i id = "wbdv-createUser"class ="wbdv-createUser fa-2x fa fa-plus"></i>
+    	<i id = "wbdv-updateUser" class ="wbdv-updateUser fa-2x fa fa-check"></i></span></th></tr>
   </thead>
   <tbody>
-  <tr class ="template">
-  	<td class ="username"></td>
-  	<td class ="password"></td>
-  	<td class ="firstName"></td>
-    <td class ="lastName"></td>
-    <td class ="role"></td>
-    <td><button class ="delete btn btn-danger"> Delete </button> 
-    	<button class ="edit btn btn-success">Edit</button></td>
+  <tr class ="wbdv-template">
+  	<td class ="wbdv-username"></td>
+  	<td class ="wbdv-password"></td>
+  	<td class ="wbdv-firstName"></td>
+    <td class ="wbdv-lastName"></td>
+    <td class ="wbdv-role"></td>
+    <td class ="wbdv-actions"><span class ="float-right">
+    <i  id ="wbdv-delete" class ="wbdv-delete fa-2x fa fa-times"></i>
+    <i  id ="wbdv-edit" class ="wbdv-edit fa-2x fa fa-pencil"></i></span></td>
   </tr>   
   </tbody>
-	<tfoot>
-   </table>
-   </div>
+  </table>
+  </div>
 
 </body>
 </html>

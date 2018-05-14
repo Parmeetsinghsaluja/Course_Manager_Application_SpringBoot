@@ -1,8 +1,8 @@
 package com.example.myapp.services;
 
-
 import java.util.List;
 import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.myapp.models.User;
@@ -33,6 +34,7 @@ public class UserService {
 	}
 	
 	@PostMapping("/api/reg")
+	@ResponseBody
 	public User reg(@RequestBody User user) {
 		Optional <User> data = repository.findUserByUserName(user.getUsername());
 		if(data.isPresent()) {
@@ -41,9 +43,17 @@ public class UserService {
 		return createUser(user);
 	}
 	
+
 	@PostMapping("/api/login")
-	public List<User> login(@RequestBody User user) {
-		return (List<User>) repository.findUserByCredentials(user.getUsername(), user.getPassword());
+	@ResponseBody
+	public User login(@RequestBody User user){
+		List <User> list =(List<User>) repository.findUserByCredentials(user.getUsername(), user.getPassword());
+		if (list.isEmpty()) {
+			return null;
+		}
+		else {
+			return list.get(0);
+		}
 	}
 	
 	@GetMapping("/api/user")
@@ -52,6 +62,7 @@ public class UserService {
 	}
 	
 	@PutMapping("/api/user/{userId}")
+	@ResponseBody
 	public User updateUser(@PathVariable("userId") int userId, @RequestBody User newUser) {
 		Optional<User> data = repository.findById(userId);
 		if(data.isPresent()) {
@@ -66,12 +77,35 @@ public class UserService {
 		return null;
 	}
 	
+	@PutMapping("/api/profile")
+	@ResponseBody
+	public User updateProfile(@RequestBody User newUser) {
+		Optional<User> data = repository.findUserByUserName(newUser.getUsername());
+		if(data.isPresent()) {
+			User user = data.get();
+			user.setEmail(newUser.getEmail());
+			user.setDateOfBirth(newUser.getDateOfBirth());
+			user.setPhone(newUser.getPhone());
+			user.setRole(newUser.getRole());
+			repository.save(user);
+			return user;
+		}
+		return null;
+	}
 	@GetMapping("/api/user/{userId}")
-	public User findUserById(@PathVariable("userId") int userId) throws Exception {
+	public User findUserById(@PathVariable("userId") int userId){
 		Optional<User> data = repository.findById(userId);
 		if(data.isPresent()) {
-			Exception e = new Exception();
-			throw e;
+			return data.get();
+		}
+		return null;
+	}
+	
+	@GetMapping("/api/profile/{username}")
+	public Integer findUserIdByUsername(@PathVariable("username") String username){
+		Optional<User> data = repository.findUserByUserName(username);
+		if(data.isPresent()) {
+			return data.get().getId();
 		}
 		return null;
 	}

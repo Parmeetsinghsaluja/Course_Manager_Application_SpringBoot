@@ -19,12 +19,21 @@
     	
     }
     function login(event) {
-    	username = event.data.username.val();
-    	password = event.data.password.val();
-    	console.log(username)
-    	userService
-    		.login(username,password)
-    		.then()
+    	var username = event.data.username.val();
+    	var password = event.data.password.val();
+    	userService.loginUser(username,password)
+    			   .then(function(response){
+    				   return response.json();
+    			   }).then(success,failure);
+    }
+    
+    function success(responseJSON){
+    	var user = responseJSON;
+    	location.href="http://localhost:8080/jquery/components/profile/profile.template.client.html?username="+user.username;
+    	}
+    
+    function failure(){
+    	alert("Wrong Username/Password");
     }
 
 })();

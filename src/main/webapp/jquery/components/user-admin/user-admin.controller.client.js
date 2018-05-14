@@ -14,13 +14,13 @@
 
     function main() {
         tbody = $('tbody');
-        template = $('.template');
+        template = $('.wbdv-template');
         $usernameFld = $("#usernameFld");
         $passwordFld = $("#passwordFld");
         $firstNameFld = $("#firstNameFld");
         $lastNameFld = $("#lastNameFld");
         $roleFld = $("#roleFld");
-        $('#createUser').click(createUser);
+        $('.wbdv-createUser').click(createUser);
 
         findAllUsers();
     }
@@ -57,13 +57,13 @@
             var clone = template.clone();
             
             clone.attr('id', user.id);
-            clone.find('.username').html(user.username)
-            clone.find('.delete').click(deleteUser);
-            clone.find('.edit').click(editUser);
-            clone.find('.password').html(user.password);
-            clone.find('.firstName').html(user.firstName);
-            clone.find('.lastName').html(user.lastName);
-            clone.find('.role').html(user.role);
+            clone.find('.wbdv-username').html(user.username)
+            clone.find('.wbdv-actions').find('.wbdv-delete').click(deleteUser);
+            clone.find('.wbdv-actions').find('.wbdv-edit').click(editUser);
+            clone.find('.wbdv-password').html(user.password);
+            clone.find('.wbdv-firstName').html(user.firstName);
+            clone.find('.wbdv-lastName').html(user.lastName);
+            clone.find('.wbdv-role').html(user.role);
             tbody.append(clone);
         }
     }
@@ -89,7 +89,7 @@
     		.findUserById(userId)
     		.then(renderUser);
     	
-    	$("#updateUser").click(userId,updateUser);
+    	$(".wbdv-updateUser").click(userId,updateUser);
     	
     	}
     
@@ -109,6 +109,7 @@
     	}
     
     function success(){
+    	findAllUsers();
     	alert("success")
     }
     

@@ -50,21 +50,16 @@
     	
         if (verifyPassword === password){
         	 userService
-        	 .reg(user);
-        	 
-        	 console.log("hi");
+        	 .reg(user)
+        	 .then(success);
         }
         else{
         	alert("password do not match")
         }
     }
     
-    function success() {
-    		alert("success")
+    function success(response) {
+    	alert(response)
     }
-    
-    function error() {
-		alert("Username Already Taken")
-}
 
 })();
