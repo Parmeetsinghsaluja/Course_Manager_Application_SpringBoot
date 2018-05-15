@@ -48,7 +48,7 @@
     }
     
     function logout(){
-    	location.href="http://localhost:8080/jquery/components/login/login.template.client.html";
+    	location.href="https://saluja-summer1-2018.herokuapp.com/jquery/components/login/login.template.client.html";
     }
 
     function success() {

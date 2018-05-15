@@ -25,7 +25,7 @@
     
     function success(responseJSON){
     	var user = responseJSON;
-    	location.href="http://localhost:8080/jquery/components/profile/profile.template.client.html?username="+user.username;
+    	location.href="https://saluja-summer1-2018.herokuapp.com/jquery/components/profile/profile.template.client.html?username="+user.username;
     	}
     
     function failure(){

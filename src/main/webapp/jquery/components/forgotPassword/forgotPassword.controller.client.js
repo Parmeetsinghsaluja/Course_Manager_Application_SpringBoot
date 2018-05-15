@@ -13,7 +13,7 @@
     	Email.send(saluja.parmeetsingh@gmail.com,
     			email,
     			"Reset your account",
-    			"Click here to reset your password http://localhost:8080/jquery/components/forgotPassword/newPassword.template.client.html",
+    			"Click here to reset your password https://saluja-summer1-2018.herokuapp.com/jquery/components/forgotPassword/newPassword.template.client.html",
     			"smtp.yourisp.com",
     			"saluja.parmeetsingh@gmail.com",
     			"af5a5ec1-ff38-4749-b784-1578773fb2de");
