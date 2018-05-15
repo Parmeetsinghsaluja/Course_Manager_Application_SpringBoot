@@ -19,26 +19,18 @@
         $lastNameFld = $("#lastNameFld");
         $roleFld = $("#roleFld");
         
-        var data = {
-        		username: $usernameFld,
-        		password: $passwordFld,
-        		verifyPassword: $verifyPasswordFld,
-    			firstName: $firstNameFld,
-    			lastName: $lastNameFld,
-    			role: $roleFld 
-        }
         $loginBtn = $("#registerBtn")
-            .click(data, register);
+            .click(register);
     	
     }
     
-    function register(event) {
-    	username = event.data.username.val();
-    	password = event.data.password.val();
-    	verifyPassword = event.data.verifyPassword.val();
-    	firstName = event.data.firstName.val();
-    	lastName = event.data.lastName.val();
-    	role = event.data.role.val();
+    function register() {
+    	var username = $usernameFld.val();
+    	var password = $passwordFld.val();
+    	var verifyPassword = $verifyPasswordFld.val();
+    	var firstName = $firstNameFld .val();
+    	var lastName = $lastNameFld.val();
+    	var role = $roleFld.val();
     	
         var user = {
         		username:  username,
@@ -50,16 +42,22 @@
     	
         if (verifyPassword === password){
         	 userService
-        	 .reg(user)
-        	 .then(success);
+        	 .registerUser(user)
+        	 .then(function(response){
+    			   return response.json();
+    			   }).then(success,failure);
         }
         else{
-        	alert("password do not match")
+        	alert("Password Do Not Match");
         }
     }
     
-    function success(response) {
-    	alert(response)
+    function success() {
+    	alert("Registered Succesfully");
+    }
+    
+    function failure() {
+    	alert("Username Taken Already");
     }
 
 })();

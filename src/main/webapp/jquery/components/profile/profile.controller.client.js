@@ -7,6 +7,7 @@
     var $dob;
     var $role;
     var $updateBtn;
+    var $logoutBtn;
     var userService = new UserServiceClient();
 
     function init() {
@@ -21,6 +22,8 @@
         $role = $("#roleFld");
         $updateBtn = $("#updateBtn")
             .click(updateUser);
+        $logoutBtn = $("#logoutBtn")
+        .click(logout);
     }
 
     function updateUser() {
@@ -35,6 +38,10 @@
         userService
             .updateProfile(user)
             .then(success);
+    }
+    
+    function logout(){
+    	location.href="http://localhost:8080/jquery/components/login/login.template.client.html";
     }
 
     function success(response) {

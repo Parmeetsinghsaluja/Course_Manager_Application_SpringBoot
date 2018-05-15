@@ -5,7 +5,7 @@ function UserServiceClient() {
     this.findUserById = findUserById;
     this.findUserIdByUsername = findUserIdByUsername;
     this.updateUser = updateUser;
-    this.reg = reg;
+    this.registerUser = registerUser;
     this.loginUser = loginUser;
     this.updateProfile = updateProfile;
     this.url =
@@ -51,11 +51,10 @@ function UserServiceClient() {
         })
         .then(function(response){
         	var promise = response.json();
-        	
         	return promise.then(function (){
 					return promise;
 					}, function (){
-							return null;
+						return null;
 					});
 	});
     }
@@ -70,7 +69,7 @@ function UserServiceClient() {
     function findUserIdByUsername(username) {
         return fetch(self.profile + '/' + username)
             .then(function(response){
-                return response.json();
+                return response;
             });
     }
 
@@ -80,21 +79,15 @@ function UserServiceClient() {
         })
     }
     
-    function reg(user) {
+    function registerUser(user) {
        return fetch(self.register, {
             method: 'post',
             body: JSON.stringify(user),
             headers: {
                 'content-type': 'application/json'
             }
-        })
-        .then(function(response){
-            if(response.status== 409) {
-            	return "Username Taken";
-            }
-            else{
-            	return "User Registered";
-            }
+        }).then(function(response){
+        	return response;
         });
     }
 

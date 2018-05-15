@@ -29,24 +29,28 @@ public class UserService {
 	}
 	
 	@PostMapping("/api/user")
+	@ResponseBody
 	public User createUser(@RequestBody User user) {
 		return repository.save(user);
 	}
 	
 	@PostMapping("/api/reg")
 	@ResponseBody
-	public User reg(@RequestBody User user) {
+	public User registerUser(@RequestBody User user) {
 		Optional <User> data = repository.findUserByUserName(user.getUsername());
 		if(data.isPresent()) {
+			System.out.println("User found");
 			return null;
 		}
-		return createUser(user);
+		else {
+			return createUser(user);
+		}
 	}
 	
 
 	@PostMapping("/api/login")
 	@ResponseBody
-	public User login(@RequestBody User user){
+	public User loginUser(@RequestBody User user){
 		List <User> list =(List<User>) repository.findUserByCredentials(user.getUsername(), user.getPassword());
 		if (list.isEmpty()) {
 			return null;
@@ -69,12 +73,15 @@ public class UserService {
 			User user = data.get();
 			user.setFirstName(newUser.getFirstName());
 			user.setUsername(newUser.getUsername());
+			user.setPassword(newUser.getPassword());
 			user.setLastName(newUser.getLastName());
 			user.setRole(newUser.getRole());
 			repository.save(user);
 			return user;
 		}
-		return null;
+		else {
+			return null;
+		}
 	}
 	
 	@PutMapping("/api/profile")
@@ -90,7 +97,9 @@ public class UserService {
 			repository.save(user);
 			return user;
 		}
-		return null;
+		else {
+			return null;
+		}	
 	}
 	@GetMapping("/api/user/{userId}")
 	public User findUserById(@PathVariable("userId") int userId){
@@ -98,15 +107,20 @@ public class UserService {
 		if(data.isPresent()) {
 			return data.get();
 		}
-		return null;
+		else {
+			return null;
+		}
 	}
 	
 	@GetMapping("/api/profile/{username}")
+	@ResponseBody
 	public Integer findUserIdByUsername(@PathVariable("username") String username){
 		Optional<User> data = repository.findUserByUserName(username);
 		if(data.isPresent()) {
 			return data.get().getId();
 		}
-		return null;
+		else {
+			return null;
+		}
 	}
 }

@@ -10,17 +10,13 @@
     function main() {
         $usernameFld = $("#usernameFld");
         $passwordFld = $("#passwordFld");
-        var data = {
-        		username: $usernameFld,
-        		password: $passwordFld
-        }
         $loginBtn = $("#loginBtn")
-            .click(data, login);
+            .click(login);
     	
     }
     function login(event) {
-    	var username = event.data.username.val();
-    	var password = event.data.password.val();
+    	var username = $usernameFld.val();
+    	var password = $passwordFld.val();
     	userService.loginUser(username,password)
     			   .then(function(response){
     				   return response.json();

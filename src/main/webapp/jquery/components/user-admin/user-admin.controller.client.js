@@ -73,6 +73,7 @@
         var userId = deleteBtn
             .parent()
             .parent()
+            .parent()
             .attr('id');
         userService
             .deleteUser(userId)
@@ -82,6 +83,7 @@
     function editUser(event) {
     	var editBtn = $(event.currentTarget);
     	var userId = editBtn
+    		.parent()
     		.parent()
     		.parent()
     		.attr('id');
@@ -110,7 +112,12 @@
     
     function success(){
     	findAllUsers();
-    	alert("success")
+    	alert("success");
+        $usernameFld.val("");
+        $passwordFld.val("");
+        $firstNameFld.val("");
+        $lastNameFld.val("");
+        $roleFld.val("");
     }
     
     function renderUser(user) {
