@@ -36,21 +36,28 @@
         };
 
         userService
-            .updateProfile(user)
-            .then(success);
+            .updateProfile(user)        	
+            .then(function(response){
+            	if( response === null){
+            		failure();
+            	}
+            	else{
+            		success();
+            	}
+            });
     }
     
     function logout(){
     	location.href="http://localhost:8080/jquery/components/login/login.template.client.html";
     }
 
-    function success(response) {
-        if(response == null) {
-            alert('Cannot Update the Profile');
-        } else {
+    function success() {
             alert('Successfully Updated Profile');
         }
+    function failure() {
+    	alert("Profile cannot be updated");
     }
+
 
     
     function findUserByUserId(userId) {

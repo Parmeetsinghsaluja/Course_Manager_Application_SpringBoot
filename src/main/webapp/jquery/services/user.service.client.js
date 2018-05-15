@@ -50,12 +50,10 @@ function UserServiceClient() {
             }
         })
         .then(function(response){
-        	var promise = response.json();
-        	return promise.then(function (){
-					return promise;
-					}, function (){
-						return null;
-					});
+        	var responseJSON = response.json();
+        	return responseJSON.then(function (){ return responseJSON;}, 
+        						     function (){return null }
+        							);
 	});
     }
 
@@ -69,7 +67,7 @@ function UserServiceClient() {
     function findUserIdByUsername(username) {
         return fetch(self.profile + '/' + username)
             .then(function(response){
-                return response;
+                return response.json();
             });
     }
 
