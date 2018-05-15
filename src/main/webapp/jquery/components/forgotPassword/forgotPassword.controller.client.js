@@ -11,7 +11,7 @@
     
     function submit(){
     	var email = $emailFld.val();
-    	Email.send(saluja.parmeetsingh@gmail.com,
+    	Email.send("saluja.parmeetsingh@gmail.com",
     			email,
     			"Reset your account",
     			"Click here to reset your password https://saluja-summer1-2018.herokuapp.com/jquery/components/forgotPassword/newPassword.template.client.html",
