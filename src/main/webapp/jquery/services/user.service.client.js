@@ -9,13 +9,13 @@ function UserServiceClient() {
     this.loginUser = loginUser;
     this.updateProfile = updateProfile;
     this.url =
-        'http://localhost:8080/api/user';
+        '/api/user';
     this.login =
-        'http://localhost:8080/api/login';
+        '/api/login';
     this.register =
-        'http://localhost:8080/api/reg';
+        '/api/reg';
     this.profile =
-        'http://localhost:8080/api/profile';
+        '/api/profile';
     var self = this;
 
     function loginUser(username, password) {
