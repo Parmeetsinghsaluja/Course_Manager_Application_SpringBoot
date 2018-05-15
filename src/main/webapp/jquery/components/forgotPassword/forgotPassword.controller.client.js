@@ -2,6 +2,7 @@
 	
 	var $emailFld;
 	var $submitBtn;
+	$(main);
     function main() {
         $emailFld = $("#emailFld");
         $submitBtn = $("#submitBtn")
