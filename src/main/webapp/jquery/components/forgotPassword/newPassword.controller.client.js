@@ -21,18 +21,38 @@
     	var password =$passwordFld.val();
         if (verifyPassword === password){
        	 userService
-       	 .findUserIdByUsername()
+       	 .findUserIdByUsername(username)
     	 .then(function(response){
-			   return response.json();
-			   }).then(updatePassword,failure);
+    		 if (response === null){
+    			 failure();
+    		 }
+    		 else{
+    			 updatePassword(response,password);
+    		 }
+    	 });
        }
         else{
         	alert("Password Do Not Match");
         }
         
     }
-        function updatePassword(){
-        	console.log("Change");
+        function updatePassword(userId,password){
+        	userService.findUserById(userId)
+        	.then(function(response){
+        		var user = {
+                		username:  response.username,
+                		password:  password,
+            			firstName: response.firstName,
+            			lastName:  response.lastName,
+            			role: response.role,  
+            			dateOfBirth: response.dateOfBirth,
+            			phone: response.phone,
+            			email: response.email
+            			
+        			}
+        		userService.updateUser(userId,user);
+        });
+        alert("success");
         }
         
         function failure(){

@@ -60,14 +60,20 @@ function UserServiceClient() {
     function findUserById(userId) {
         return fetch(self.url + '/' + userId)
             .then(function(response){
-                return response.json();
+            	var responseJSON = response.json();
+            	return responseJSON.then(function (){ return responseJSON;}, 
+					     function (){return null }
+						);
             });
     }
     
     function findUserIdByUsername(username) {
         return fetch(self.profile + '/' + username)
             .then(function(response){
-                return response.json();
+            	var responseJSON = response.json();
+            	return responseJSON.then(function (){ return responseJSON;}, 
+					     function (){return null }
+						);
             });
     }
 
