@@ -99,7 +99,6 @@
     	
         var user = {
                 username: $usernameFld.val(),
-                password: $passwordFld.val(),
                 firstName: $firstNameFld.val(),
                 lastName: $lastNameFld.val(),
                 role: $roleFld.val()
