@@ -44,6 +44,7 @@ public class TopicServices {
 		Optional<Lesson> data = lessonRepository.findById(lessonId);
 		if(data.isPresent()) {
 			Lesson lesson = data.get();
+			System.out.println("hi"+lesson.getTopics().size());
 			return lesson.getTopics();
 		}
 		return null;		

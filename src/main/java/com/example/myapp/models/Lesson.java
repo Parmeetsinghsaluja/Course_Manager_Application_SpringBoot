@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
@@ -18,6 +19,7 @@ public class Lesson {
 	@ManyToOne
 	@JsonIgnore
 	private Module module;
+	@OneToMany(mappedBy="lesson")
 	private List<Topic> topics;
 	
 	public int getId() {

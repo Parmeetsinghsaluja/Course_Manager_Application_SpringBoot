@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.myapp.models.Module;
 import com.example.myapp.models.Lesson;
@@ -19,6 +21,8 @@ import com.example.myapp.repositories.ModuleRepository;
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class LessonServices {
+	
+	
 	@Autowired
 	ModuleRepository moduleRepository;
 	
@@ -26,13 +30,12 @@ public class LessonServices {
 	LessonRepository lessonRepository;
 	
 	@PostMapping("/api/course/{courseId}/module/{moduleId}/lesson")
-	public Lesson createLesson(
+	public Lesson createLesson(@PathVariable("courseId") int courseId,
 			@PathVariable("moduleId") int moduleId,
 			@RequestBody Lesson newLesson) {
 			Optional<Module> moduleData = moduleRepository.findById(moduleId);
 			if(moduleData.isPresent()) {
 				Module module = moduleData.get();
-			
 				newLesson.setModule(module);
 				return lessonRepository.save(newLesson);
 		}
@@ -60,5 +63,20 @@ public class LessonServices {
 	public List<Lesson> findAllLessons()
 	{
 		return (List<Lesson>) lessonRepository.findAll();
+	}
+	
+	@PutMapping("/api/lesson/{lessonId}")
+	@ResponseBody
+	public Lesson updateLesson(@PathVariable("lessonId") int lessonId, @RequestBody Lesson newLesson) {
+		Optional<Lesson> data = lessonRepository.findById(lessonId);
+		if(data.isPresent()) {
+			Lesson lesson = data.get();
+			/* Do Something */
+			lessonRepository.save(lesson);
+			return lesson;
+		}
+		else {
+			return null;
+		}
 	}
 }
