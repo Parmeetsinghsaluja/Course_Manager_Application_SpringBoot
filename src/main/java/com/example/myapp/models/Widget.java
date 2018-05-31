@@ -19,11 +19,18 @@ public class Widget {
 	private int listType;
 	private String link;
 	private String widgetType;
+	private String name;
 	
 	@ManyToOne
 	@JsonIgnore
 	private Topic topic;
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getHeadingValue() {
 		return headingValue;
 	}
