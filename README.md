@@ -20,3 +20,7 @@ Database - MySQL
 Backend -  SpringBoot
 Frontend - Javscript, Jquery, HTML, CSS and Bootstrap
 SMTP Service - Elastic Email
+
+
+This repository also contains the backend or middle tier of the Faculty Application developed in React and Redux.
+The repository of front end is https://github.com/Parmeetsinghsaluja/React
