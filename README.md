@@ -9,6 +9,7 @@ The following features are implemented:
 - Registration allows anyone to register as a user
 - Login allows anyone to login
 - Profile allows logged in users to update their profile information
+<br/>
 
 The application is deployed on heroku.
 <br/>
@@ -19,6 +20,7 @@ The application is deployed on heroku.
 
 <br/>
 
+The technologies used to develop this application is:
 - Database: MySQL
 - Backend: SpringBoot
 - Frontend: Javscript, Jquery, HTML, CSS and Bootstrap
@@ -26,4 +28,4 @@ The application is deployed on heroku.
 
 
 This repository also contains the backend or middle tier of the Faculty Application developed in React and Redux.
-The repository of front end is https://github.com/Parmeetsinghsaluja/React
+The repository for frontend  of Faculty Application is https://github.com/Parmeetsinghsaluja/React
