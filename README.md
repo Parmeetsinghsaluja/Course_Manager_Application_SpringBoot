@@ -11,15 +11,17 @@ Login allows anyone to login
 Profile allows logged in users to update their profile information
 
 The application is deployed on heroku.
-Login -https://saluja-summer1-2018.herokuapp.com/jquery/components/login/login.template.client.html
-Registration -https://saluja-summer1-2018.herokuapp.com/jquery/components/signup/register.template.client.html
-User-Admin - https://saluja-summer1-2018.herokuapp.com/jquery/components/user-admin/user-admin.template.client.html
-Forgot Password -https://saluja-summer1-2018.herokuapp.com/jquery/components/forgotPassword/forgotPassword.template.client.html
+-Login -https://saluja-summer1-2018.herokuapp.com/jquery/components/login/login.template.client.html
+-Registration -https://saluja-summer1-2018.herokuapp.com/jquery/components/signup/register.template.client.html
+-User-Admin - https://saluja-summer1-2018.herokuapp.com/jquery/components/user-admin/user-admin.template.client.html
+-Forgot Password -https://saluja-summer1-2018.herokuapp.com/jquery/components/forgotPassword/forgotPassword.template.client.html
 
-Database - MySQL
-Backend -  SpringBoot
-Frontend - Javscript, Jquery, HTML, CSS and Bootstrap
-SMTP Service - Elastic Email
+\n
+
+-Database - MySQL
+-Backend -  SpringBoot
+-Frontend - Javscript, Jquery, HTML, CSS and Bootstrap
+-SMTP Service - Elastic Email
 
 
 This repository also contains the backend or middle tier of the Faculty Application developed in React and Redux.
