@@ -17,10 +17,9 @@ import course_manager.repositories.ExamRepository;
 import course_manager.repositories.MultipleChoicesQuestionRepository;
 import course_manager.repositories.TrueFalseQuestionRepository;
 
-
 @RestController
 @CrossOrigin(origins = "*")
-public class ExamServices {
+public class ExamService {
 	@Autowired
 	ExamRepository examRepository;
 	@Autowired

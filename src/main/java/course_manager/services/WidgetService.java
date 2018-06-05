@@ -11,25 +11,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import course_manager.models.Topic;
+import course_manager.models.Lesson;
 import course_manager.models.Widget;
-import course_manager.repositories.TopicRepository;
+import course_manager.repositories.LessonRepository;
 import course_manager.repositories.WidgetRepository;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class WidgetServices {
+public class WidgetService {
 	@Autowired
 	WidgetRepository repository;
 	@Autowired
-	TopicRepository TopicRepository;
+	LessonRepository lessonRepository;
 	
-	@GetMapping("/api/topic/{topicId}/widget")
-	public List<Widget> findAllWidgetsForTopic(@PathVariable("topicId") int topicId) {
-		Optional<Topic> optionalTopic = TopicRepository.findById(topicId);
-		if(optionalTopic.isPresent()) {
-			Topic topic = optionalTopic.get();
-			return topic.getWidgets();
+	@GetMapping("/api/lesson/{lessonId}/widget")
+	public List<Widget> findAllWidgetsForLesson(@PathVariable("lessonId") int lessonId) {
+		Optional<Lesson> optionalLesson = lessonRepository.findById(lessonId);
+		if(optionalLesson.isPresent()) {
+			Lesson lesson = optionalLesson.get();
+			return lesson.getWidgets();
 		}
 		return null;
 	}

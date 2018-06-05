@@ -4,6 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import course_manager.models.Widget;
 
-public interface WidgetRepository extends CrudRepository<Widget, Integer> {
-	
+public interface WidgetRepository
+extends CrudRepository<Widget, Integer>{
+
 }

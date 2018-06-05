@@ -1,6 +1,7 @@
 package course_manager.models;
 
 import javax.persistence.Entity;
+
 @Entity
 public class TrueFalseQuestion extends Question {
 	private boolean isTrue;
