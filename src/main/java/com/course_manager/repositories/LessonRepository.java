@@ -1,7 +1,8 @@
-package com.example.myapp.repositories;
+package com.course_manager.repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import com.example.myapp.models.Lesson;
+
+import com.course_manager.models.Lesson;
 
 public interface LessonRepository extends CrudRepository<Lesson, Integer> {
 

@@ -1,7 +1,8 @@
-package com.example.myapp.repositories;
+package com.course_manager.repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import com.example.myapp.models.Widget;
+
+import com.course_manager.models.Widget;
 
 public interface WidgetRepository extends CrudRepository<Widget, Integer> {
 	

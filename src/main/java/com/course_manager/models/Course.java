@@ -1,4 +1,4 @@
-package com.example.myapp.models;
+package com.course_manager.models;
 
 
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.example.myapp.services;
+package com.course_manager.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.myapp.models.User;
-import com.example.myapp.repositories.UserRepository;
+import com.course_manager.models.User;
+import com.course_manager.repositories.UserRepository;
 
 
 @RestController

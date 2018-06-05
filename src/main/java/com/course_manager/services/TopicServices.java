@@ -1,4 +1,4 @@
-package com.example.myapp.services;
+package com.course_manager.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.example.myapp.models.Topic;
-import com.example.myapp.models.Lesson;
-import com.example.myapp.repositories.LessonRepository;
-import com.example.myapp.repositories.TopicRepository;
+
+import com.course_manager.models.Lesson;
+import com.course_manager.models.Topic;
+import com.course_manager.repositories.LessonRepository;
+import com.course_manager.repositories.TopicRepository;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)

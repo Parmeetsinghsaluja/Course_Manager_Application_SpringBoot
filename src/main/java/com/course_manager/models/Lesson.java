@@ -1,4 +1,4 @@
-package com.example.myapp.models;
+package com.course_manager.models;
 
 import java.util.List;
 
@@ -11,25 +11,19 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
-public class Topic {
+public class Lesson {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String title;
 	@ManyToOne
 	@JsonIgnore
-	private Lesson lesson;
-	@OneToMany(mappedBy="topic")
-	private List<Widget> widgets;
+	private Module module;
+	@OneToMany(mappedBy="lesson")
+	private List<Topic> topics;
 	
 	public int getId() {
 		return id;
-	}
-	public List<Widget> getWidgets() {
-		return widgets;
-	}
-	public void setWidgets(List<Widget> widgets) {
-		this.widgets = widgets;
 	}
 	public void setId(int id) {
 		this.id = id;
@@ -40,10 +34,16 @@ public class Topic {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Lesson getLesson() {
-		return lesson;
+	public Module getModule() {
+		return module;
 	}
-	public void setLesson(Lesson lesson) {
-		this.lesson = lesson;
+	public void setModule(Module module) {
+		this.module = module;
+	}
+	public List<Topic> getTopics() {
+		return topics;
+	}
+	public void setTopics(List<Topic> topics) {
+		this.topics = topics;
 	}
 }
