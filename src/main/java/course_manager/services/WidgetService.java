@@ -37,7 +37,6 @@ public class WidgetService {
 	public void saveWidgetsForLesson(@RequestBody
 			Widget widget,
 			@PathVariable("lessonId") int lessonId) {
-		System.out.println("Inside");
 		Optional<Lesson> data = lessonRepository.findById(lessonId);
 		
 		if(data.isPresent()) {

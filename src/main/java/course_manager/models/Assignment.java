@@ -1,19 +1,12 @@
 package course_manager.models;
 
-import java.util.List;
-
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Exam extends Widget {
+public class Assignment extends Widget{
 	private String title;
 	private String description;
-	@OneToMany(mappedBy="exam")
-	@JsonIgnore
-	private List<Question> questions;
+	private int points;
 	
 	public String getTitle() {
 		return title;
@@ -27,10 +20,10 @@ public class Exam extends Widget {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public List<Question> getQuestions() {
-		return questions;
+	public int getPoints() {
+		return points;
 	}
-	public void setQuestions(List<Question> questions) {
-		this.questions = questions;
+	public void setPoints(int points) {
+		this.points = points;
 	}
 }
