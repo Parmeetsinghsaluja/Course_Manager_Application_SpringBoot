@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,5 +55,10 @@ public class ExamService {
 			return questions;
 		}
 		return null;
+	}
+	
+	@DeleteMapping("/api/exam/{examId}")
+	public void deleteExam(@PathVariable("examId") int examId) {
+		examRepository.deleteById(examId);
 	}
 }
