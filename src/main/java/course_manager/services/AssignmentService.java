@@ -33,7 +33,7 @@ public class AssignmentService {
 	}
 
 	@GetMapping("/api/assignment")
-	public Iterable<Assignment> findAllCourses() {
+	public Iterable<Assignment> findAllAssignments() {
 		return assignmentRepository.findAll(); 
 	}
 	

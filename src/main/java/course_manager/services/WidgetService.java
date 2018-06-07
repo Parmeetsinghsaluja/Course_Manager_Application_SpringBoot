@@ -11,16 +11,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import course_manager.models.Assignment;
+import course_manager.models.Exam;
 import course_manager.models.Lesson;
 import course_manager.models.Widget;
+import course_manager.repositories.AssignmentRepository;
+import course_manager.repositories.ExamRepository;
 import course_manager.repositories.LessonRepository;
 import course_manager.repositories.WidgetRepository;
+
 
 @RestController
 @CrossOrigin(origins = "*")
 public class WidgetService {
 	@Autowired
 	WidgetRepository repository;
+	@Autowired
+	ExamRepository examRepository;
+	@Autowired
+	AssignmentRepository assignmentRepository;
 	@Autowired
 	LessonRepository lessonRepository;
 	
@@ -33,23 +42,29 @@ public class WidgetService {
 		}
 		return null;
 	}
+	
 	@PostMapping("/api/lesson/{lessonId}/exam")
-	public void saveWidgetsForLesson(@RequestBody
-			Widget widget,
-			@PathVariable("lessonId") int lessonId) {
+	public void saveExamsForLesson(@RequestBody Exam exam, @PathVariable("lessonId") int lessonId) {
 		Optional<Lesson> data = lessonRepository.findById(lessonId);
-		
 		if(data.isPresent()) {
 			Lesson lesson = data.get();
-			widget.setLesson(lesson);
-			repository.save(widget);
-			
+			exam.setLesson(lesson);
+			examRepository.save(exam);
+		}
+	}
+	
+	@PostMapping("/api/lesson/{lessonId}/assignment")
+	public void saveAssignmentsForLesson(@RequestBody Assignment assignment, @PathVariable("lessonId") int lessonId) {
+		Optional<Lesson> data = lessonRepository.findById(lessonId);
+		if(data.isPresent()) {
+			Lesson lesson = data.get();
+			assignment.setLesson(lesson);
+			assignmentRepository.save(assignment);
 		}
 	}
 	
 	@PostMapping("/api/widget/save")
-	public void saveAllWidgets(@RequestBody
-			List<Widget> widgets) {
+	public void saveAllWidgets(@RequestBody List<Widget> widgets) {
 		repository.deleteAll();
 		for(Widget widget: widgets) {
 			repository.save(widget);
