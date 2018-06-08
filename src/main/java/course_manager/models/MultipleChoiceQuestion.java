@@ -6,8 +6,16 @@ import javax.persistence.Entity;
 public class MultipleChoiceQuestion extends Question {
 	private String options;
 	private int correctOption;
+	private String description;
+	
 	public String getOptions() {
 		return options;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public void setOptions(String options) {
 		this.options = options;
