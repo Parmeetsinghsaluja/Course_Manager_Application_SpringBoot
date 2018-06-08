@@ -20,3 +20,12 @@ Database - MySQL
 Backend -  SpringBoot
 Frontend - Javscript, Jquery, HTML, CSS and Bootstrap
 SMTP Service - Elastic Email
+
+The branch https://github.com/Parmeetsinghsaluja/Course_Manager_Application_SpringBoot/tree/react-native-course-manager-app provides Middle Tier Services for React Native Course Manager Application.
+<br/>
+
+The repository for the react native app is https://github.com/Parmeetsinghsaluja/Course_Manager_Application_React_Native_App
+
+<br/>
+
+The service provided in react native are Add, View, Update and Delete Exam and Assignment Widgets.
