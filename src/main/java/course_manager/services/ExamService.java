@@ -139,7 +139,7 @@ public class ExamService {
 	}
 	
 	@PutMapping("/api/truefalse/{questionId}")
-	public TrueFalseQuestion updateTrueFalse(@PathVariable("questionId") int questionId, 
+	public TrueFalseQuestion updateTrueFalseQuestion(@PathVariable("questionId") int questionId, 
 										@RequestBody TrueFalseQuestion tfQuestion) {
 		Optional<TrueFalseQuestion> data = trueFalseRepository.findById(questionId);
 		if(data.isPresent()) {
@@ -155,13 +155,15 @@ public class ExamService {
 	}
 	
 	@PutMapping("/api/multi/{questionId}")
-	public MultipleChoiceQuestion updateMultipleChoice(@PathVariable("questionId") int questionId, 
+	public MultipleChoiceQuestion updateMultipleChoiceQuestion(@PathVariable("questionId") int questionId, 
 										@RequestBody MultipleChoiceQuestion multiChoiceQuestion) {
 		Optional<MultipleChoiceQuestion> data = multiRepository.findById(questionId);
 		if(data.isPresent()) {
 			MultipleChoiceQuestion newMultiChoiceQuestion = data.get();
 			newMultiChoiceQuestion.setTitle(multiChoiceQuestion.getTitle());
 			newMultiChoiceQuestion.setDescription(multiChoiceQuestion.getDescription());
+			newMultiChoiceQuestion.setOptions(multiChoiceQuestion.getOptions());
+			newMultiChoiceQuestion.setCorrectOption(multiChoiceQuestion.getCorrectOption());
 			newMultiChoiceQuestion.setPoints(multiChoiceQuestion.getPoints());
 			return multiRepository.save(newMultiChoiceQuestion);
 		}
@@ -169,7 +171,7 @@ public class ExamService {
 	}
 	
 	@PutMapping("/api/blanks/{questionId}")
-	public FillInTheBlankQuestion updateFillInTheBlank(@PathVariable("questionId") int questionId, 
+	public FillInTheBlankQuestion updateFillInTheBlankQuestion(@PathVariable("questionId") int questionId, 
 										@RequestBody FillInTheBlankQuestion fillInTheBlankQuestion) {
 		Optional<FillInTheBlankQuestion> data = blanksRepository.findById(questionId);
 		if(data.isPresent()) {
@@ -177,13 +179,14 @@ public class ExamService {
 			newFillInTheBlankQuestion.setTitle(fillInTheBlankQuestion.getTitle());
 			newFillInTheBlankQuestion.setDescription(fillInTheBlankQuestion.getDescription());
 			newFillInTheBlankQuestion.setPoints(fillInTheBlankQuestion.getPoints());
+			newFillInTheBlankQuestion.setVariables(fillInTheBlankQuestion.getVariables());
 			return blanksRepository.save(newFillInTheBlankQuestion);
 		}
 		return null;
 	}
 	
 	@PutMapping("/api/essay/{questionId}")
-	public EssayQuestion updateEssay(@PathVariable("questionId") int questionId, 
+	public EssayQuestion updateEssayQuestion(@PathVariable("questionId") int questionId, 
 									@RequestBody FillInTheBlankQuestion essayQuestion) {
 		Optional<EssayQuestion> data = essayRepository.findById(questionId);
 		if(data.isPresent()) {
@@ -197,19 +200,19 @@ public class ExamService {
 	}
 	
 	@DeleteMapping("/api/truefalse/{questionId}")
-	public void deleteTrueFalse(@PathVariable("questionId") int id) {
+	public void deleteTrueFalseQuestion(@PathVariable("questionId") int id) {
 		trueFalseRepository.deleteById(id);
 	}
 	@DeleteMapping("/api/essay/{questionId}")
-	public void deleteEssay(@PathVariable("questionId") int id) {
+	public void deleteEssayQuestion(@PathVariable("questionId") int id) {
 		essayRepository.deleteById(id);
 	}
 	@DeleteMapping("/api/blanks/{questionId}")
-	public void deleteFillInTheBlanks(@PathVariable("questionId") int id) {
+	public void deleteFillInTheBlanksQuestion(@PathVariable("questionId") int id) {
 		blanksRepository.deleteById(id);
 	}
 	@DeleteMapping("/api/multi/{questionId}")
-	public void deleteMultipleChoice(@PathVariable("questionId") int id) {
+	public void deleteMultipleChoiceQuestion(@PathVariable("questionId") int id) {
 		multiRepository.deleteById(id);
 	}
 	
